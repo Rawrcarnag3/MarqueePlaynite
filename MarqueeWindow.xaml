@@ -1,0 +1,46 @@
+<Window x:Class="MarqueePlaynite.MarqueeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Marquee"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Black"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        ShowActivated="False"
+        Focusable="False"
+        WindowStartupLocation="Manual">
+    <!--
+        RootGrid's solid black background is the only thing that ever fills the
+        whole monitor and it never fades - only the two content layers underneath
+        it crossfade against each other. That's what stops the desktop from
+        flashing through mid-transition.
+    -->
+    <Grid x:Name="RootGrid" Background="Black">
+        <Grid x:Name="ContentHost"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center">
+            <Grid x:Name="LayerA" Opacity="1">
+                <Image x:Name="ImageA" Stretch="Uniform" Visibility="Collapsed" />
+                <MediaElement x:Name="VideoA"
+                              Stretch="Uniform"
+                              LoadedBehavior="Manual"
+                              UnloadedBehavior="Manual"
+                              Volume="0"
+                              IsMuted="True"
+                              Visibility="Collapsed" />
+            </Grid>
+            <Grid x:Name="LayerB" Opacity="0">
+                <Image x:Name="ImageB" Stretch="Uniform" Visibility="Collapsed" />
+                <MediaElement x:Name="VideoB"
+                              Stretch="Uniform"
+                              LoadedBehavior="Manual"
+                              UnloadedBehavior="Manual"
+                              Volume="0"
+                              IsMuted="True"
+                              Visibility="Collapsed" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

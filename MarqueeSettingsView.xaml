@@ -1,0 +1,76 @@
+<UserControl x:Class="MarqueePlaynite.MarqueeSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignWidth="520">
+    <StackPanel Margin="10" MinWidth="480">
+        <CheckBox Content="Enable marquee display"
+                  IsChecked="{Binding Enabled}"
+                  Margin="0,0,0,12" />
+
+        <TextBlock Text="Marquee monitor" FontWeight="Bold" Margin="0,0,0,4" />
+        <ComboBox x:Name="ScreenCombo"
+                  DisplayMemberPath="Description"
+                  SelectedValuePath="Index"
+                  SelectedValue="{Binding TargetScreenIndex}"
+                  Margin="0,0,0,12" />
+
+        <Grid Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="12" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Marquee width (px)" FontWeight="Bold" Margin="0,0,0,4" />
+                <TextBox Text="{Binding MarqueeWidth, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="Marquee height (px)" FontWeight="Bold" Margin="0,0,0,4" />
+                <TextBox Text="{Binding MarqueeHeight, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Text="Crossfade duration (ms)" FontWeight="Bold" Margin="0,0,0,4" />
+        <TextBox Text="{Binding FadeDurationMs, UpdateSourceTrigger=PropertyChanged}"
+                  Margin="0,0,0,12" />
+
+        <TextBlock Text="Marquees folder" FontWeight="Bold" Margin="0,0,0,4" />
+        <TextBlock Text="Point this at your existing Marquees folder to reuse all your current images/videos as-is (they're already named by Game ID)."
+                   TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,4" />
+        <Grid Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding MarqueesFolderPath, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Grid.Column="2" Content="Browse..." Padding="10,2" Click="BrowseButton_Click" />
+            <Button Grid.Column="4" Content="Open folder" Padding="10,2" Click="OpenFolderButton_Click" />
+        </Grid>
+
+        <CheckBox Content="Show INTRO-Playnite_marquee on Playnite startup"
+                  IsChecked="{Binding ShowIntroOnStartup}"
+                  Margin="0,0,0,8" />
+        <Grid Margin="20,0,0,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="60" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" VerticalAlignment="Center"
+                       Text="Keep it on screen for at least (seconds), ignoring the game the library auto-highlights on load:" TextWrapping="Wrap" />
+            <TextBox Grid.Column="1" Margin="8,0,0,0"
+                     Text="{Binding IntroHoldSeconds, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+        <CheckBox Content="Also update marquee when a game actually launches (not just when selected)"
+                  IsChecked="{Binding UpdateOnGameStarting}"
+                  Margin="0,0,0,8" />
+
+        <TextBlock TextWrapping="Wrap" Opacity="0.7" Margin="0,12,0,0"
+                   Text="Drop images/videos named by Game ID (e.g. a1b2c3d4-....png) into the Marquees folder for zero-config per-game marquees. Add default_marquee.png/.mp4 as a fallback and INTRO-Playnite_marquee.png/.mp4 for the startup screen. Supported: .png .jpg .jpeg .webp .mp4" />
+    </StackPanel>
+</UserControl>

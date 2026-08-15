@@ -1,0 +1,10 @@
+Id: MarqueePlaynite_9f1e2713_Plugin
+Name: Marquee Display
+Author: You
+Version: 1.0.0
+Module: MarqueePlaynite.dll
+Type: GenericPlugin
+Icon: icon.png
+Links:
+    - Name: Source
+      Url: https://github.com/yourname/marquee-playnite
