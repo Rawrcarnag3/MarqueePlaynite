@@ -52,9 +52,11 @@ from file**.
 
 ## Screenshots
 
-*(add a screenshot or two here of the marquee in action — drop image files
-into a `docs/` or `screenshots/` folder and reference them like:
-`![Marquee example](docs/example.png)`)*
+![Marquee running on the cabinet](screenshots/marquee-example2.png)
+*The marquee in action on the cab*
+
+![Extension settings panel](screenshots/marquee-example1.png)
+*Configuring monitor, size, and Marquees folder from Playnite's own settings UI*
 
 ## Building from source
 
