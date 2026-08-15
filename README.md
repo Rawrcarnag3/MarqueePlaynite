@@ -52,7 +52,7 @@ from file**.
 
 ## Screenshots
 
-![Marquee running on the cabinet](screenshots/marquee-example2.png)
+![Marquee running on the cabinet](screenshots/marquee-cabinet.png)
 *The marquee in action on the cab*
 
 ![Extension settings panel](screenshots/marquee-example1.png)
