@@ -7,6 +7,7 @@ setup.
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Playnite Add-on](https://img.shields.io/badge/Playnite-Add--on-orange.svg)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-ffdd00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/rawrcarnag3)
 
 ## Features
 
