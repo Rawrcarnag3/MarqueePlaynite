@@ -38,7 +38,7 @@
                   Margin="0,0,0,12" />
 
         <TextBlock Text="Marquees folder" FontWeight="Bold" Margin="0,0,0,4" />
-        <TextBlock Text="Point this at your existing Marquees folder to reuse all your current images/videos as-is (they're already named by Game ID)."
+        <TextBlock Text="Point this at your existing Marquees folder to reuse all your current images/videos as-is (they're already named by Database ID)."
                    TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,4" />
         <Grid Margin="0,0,0,12">
             <Grid.ColumnDefinitions>
@@ -71,6 +71,6 @@
                   Margin="0,0,0,8" />
 
         <TextBlock TextWrapping="Wrap" Opacity="0.7" Margin="0,12,0,0"
-                   Text="Drop images/videos named by Game ID (e.g. a1b2c3d4-....png) into the Marquees folder for zero-config per-game marquees. Add default_marquee.png/.mp4 as a fallback and INTRO-Playnite_marquee.png/.mp4 for the startup screen. Supported: .png .jpg .jpeg .webp .mp4" />
+                   Text="Drop images/videos named by Database ID (e.g. a1b2c3d4-....png) or Game Name into the Marquees folder for zero-config per-game marquees. Add default_marquee.png/.mp4 as a fallback and INTRO-Playnite_marquee.png/.mp4 for the startup screen. Supported: .png .jpg .jpeg .webp .mp4" />
     </StackPanel>
 </UserControl>
