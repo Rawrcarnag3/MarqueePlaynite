@@ -36,12 +36,15 @@ namespace MarqueePlaynite
                     }
                 }
             };
-        }
 
-        public override void OnApplicationStarted(OnApplicationStartedEventArgs args)
-        {
             try
             {
+                // Show the intro as early as possible - the plugin is constructed
+                // while Playnite is still loading extensions, well before
+                // OnApplicationStarted fires (that only runs once the boot video
+                // has finished). Showing it here instead of waiting for that event
+                // is what makes the intro visible *during* the boot video rather
+                // than only after it ends.
                 if (settings.ShowIntroOnStartup)
                 {
                     windowManager.ShowIntro();
@@ -49,7 +52,23 @@ namespace MarqueePlaynite
             }
             catch (Exception ex)
             {
-                logger.Error(ex, "Marquee: failed to show intro marquee on startup.");
+                logger.Error(ex, "Marquee: failed to show intro marquee on plugin load.");
+            }
+        }
+
+        public override void OnApplicationStarted(OnApplicationStartedEventArgs args)
+        {
+            try
+            {
+                // The intro (if enabled) is already showing by this point - see the
+                // constructor. This just refreshes the hold window now that the app
+                // has genuinely finished starting (boot video done), so it also
+                // covers any selection Playnite fires right as the boot video ends.
+                windowManager.ReleaseStartupHold();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Marquee: failed to release startup hold.");
             }
         }
 
