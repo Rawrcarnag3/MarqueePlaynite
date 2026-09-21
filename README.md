@@ -41,9 +41,10 @@ from file**.
 1. Open **Add-ons → Extension settings → Marquee Display**.
 2. Point **Marquees folder** at a folder containing your images/videos.
 3. Drop files into it named:
-   - `<GameId>.png` (or `.jpg`/`.jpeg`/`.webp`/`.mp4`) — shown for that
-     specific game (find the Game ID by right-clicking a game → hover
-     "Copy" in the context menu, or check Playnite's game details).
+   - `<DatabaseId>.png` (or `.jpg`/`.jpeg`/`.webp`/`.mp4`) — shown for that
+     specific game (this is the game's internal Database ID in Playnite,
+     not the title — right-click a game → hover "Copy" in the context
+     menu to grab it, or check the game's details).
    - `<Game Name>.png` — shown by exact title match if no ID match exists.
    - `default_marquee.png` — fallback for any game without a specific
      marquee.
