@@ -23,7 +23,14 @@ namespace MarqueePlaynite
         private int windowScreenIndex;
 
         private string lastShownPath;
-        private DateTime introHoldUntilUtc = DateTime.MinValue;
+        // Blocks ALL selection-driven marquee updates until startup logic explicitly
+        // opens the gate (see ShowIntro / ReleaseStartupHold). Starts at MaxValue
+        // rather than "no hold" because in Fullscreen mode Playnite auto-selects the
+        // first library game - firing OnGameSelected - before OnApplicationStarted
+        // ever runs (it fires only once the boot video finishes). Without this,
+        // that early auto-selection briefly flashes the first game's marquee during
+        // the boot video before the real intro/hold logic even starts.
+        private DateTime introHoldUntilUtc = DateTime.MaxValue;
 
         public MarqueeWindowManager(IPlayniteAPI api, MarqueePluginSettings settings)
         {
@@ -43,6 +50,16 @@ namespace MarqueePlaynite
             introHoldUntilUtc = DateTime.UtcNow.AddSeconds(Math.Max(0, settings.IntroHoldSeconds));
 
             ShowPath(path, force: true);
+        }
+
+        /// <summary>
+        /// Opens the startup hold window without showing the intro image - used when
+        /// "Show INTRO on startup" is disabled in settings, so the MaxValue block above
+        /// still gets released and the marquee starts responding to selections again.
+        /// </summary>
+        public void ReleaseStartupHold()
+        {
+            introHoldUntilUtc = DateTime.UtcNow.AddSeconds(Math.Max(0, settings.IntroHoldSeconds));
         }
 
         public void ShowForGame(Game game)
